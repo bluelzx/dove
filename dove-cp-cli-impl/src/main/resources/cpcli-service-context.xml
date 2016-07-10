@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation=" 
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd 
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.2.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+  <!-- local package -->
+  <context:component-scan base-package="com.gustz.dove.cpcli.api.*.service.*" />
+
+  <!-- extends tool package -->
+  <context:component-scan base-package="com.gustz.fw.service.annotation.*" />
+  <!-- AOP annotation config -->
+  <aop:aspectj-autoproxy />
+
+  <!-- property config begin -->
+  <util:properties id="cpAddrbookWsUrlConf" location="classpath:conf/cp-addrbook-ws-url.properties" />
+  <bean class="com.gustz.dove.cpcli.api.service.conf.CpAddrbookWsUrlConf" />
+
+  <util:properties id="cpAgentWsUrlConf" location="classpath:conf/cp-agent-ws-url.properties" />
+  <bean class="com.gustz.dove.cpcli.api.service.conf.CpAgentWsUrlConf" />
+
+  <util:properties id="cpCustomerWsUrlConf" location="classpath:conf/cp-customer-ws-url.properties" />
+  <bean class="com.gustz.dove.cpcli.api.service.conf.CpCustomerWsUrlConf" />
+
+  <util:properties id="cpMaterialWsUrlConf" location="classpath:conf/cp-material-ws-url.properties" />
+  <bean class="com.gustz.dove.cpcli.api.service.conf.CpMaterialWsUrlConf" />
+
+  <util:properties id="cpMenuWsUrlConf" location="classpath:conf/cp-menu-ws-url.properties" />
+  <bean class="com.gustz.dove.cpcli.api.service.conf.CpMenuWsUrlConf" />
+
+  <util:properties id="cpMessageWsUrlConf" location="classpath:conf/cp-message-ws-url.properties" />
+  <bean class="com.gustz.dove.cpcli.api.service.conf.CpMessageWsUrlConf" />
+
+  <util:properties id="cpSecurityWsUrlConf" location="classpath:conf/cp-security-ws-url.properties" />
+  <bean class="com.gustz.dove.cpcli.api.service.conf.CpSecurityWsUrlConf" />
+  
+  <!-- property config end -->
+
+</beans>

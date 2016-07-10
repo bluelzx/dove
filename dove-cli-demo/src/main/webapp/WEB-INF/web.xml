@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  <!-- spring charset filter begin -->
+  <filter>
+    <filter-name>CharsetFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharsetFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <!-- spring charset filter end -->
+
+  <!-- wcsb servlet begin -->
+  <filter>
+    <filter-name>WscCpLoginFilter</filter-name>
+    <filter-class>com.gustz.dove.cli.sdk.web.WscCpLoginFilter</filter-class>
+    <init-param>
+      <param-name>ignoreUris</param-name>
+      <param-value>/themes/,/alert/,/success.jsp,/success,/wcsbus/</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>WscCpLoginFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>DemoWscReceiveSlet</servlet-name>
+    <servlet-class>com.gustz.dove.cli.demo.web.wcsb.DemoWscReceiveSlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DemoWscReceiveSlet</servlet-name>
+    <url-pattern>/wcsbus/cli/receiveMsg</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DemoWscOauthSlet</servlet-name>
+    <servlet-class>com.gustz.dove.cli.demo.web.wcsb.DemoWscOauthSlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DemoWscOauthSlet</servlet-name>
+    <url-pattern>/wcsbus/cp/doCpOauth</url-pattern>
+  </servlet-mapping>
+  <!-- wcsb servlet end -->
+
+  <!-- spring mvc servlet begin -->
+  <servlet>
+    <servlet-name>appServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+    <!-- avaliable under j2ee 3.0 -->
+    <!-- <async-supported>true</async-supported> -->
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>appServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <!-- spring mvc servlet end -->
+
+  <!-- error page begin -->
+  <error-page>
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/views/error.html</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/views/error.html</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/views/error.html</location>
+  </error-page>
+  <error-page>
+    <error-code>403</error-code>
+    <location>/views/error.html</location>
+  </error-page>
+  <!-- error page end -->
+
+</web-app>

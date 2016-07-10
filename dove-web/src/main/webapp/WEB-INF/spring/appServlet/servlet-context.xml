@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:beans="http://www.springframework.org/schema/beans" xmlns:task="http://www.springframework.org/schema/task"
+  xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+  <!-- Set upload file parameter -->
+  <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <beans:property name="resolveLazily" value="true" />
+    <beans:property name="maxUploadSize" value="10485760" /> <!-- 10MB -->
+  </beans:bean>
+
+  <!-- Handles HTTP GET requests for /resources/** by efficiently serving
+    up static resources in the ${webappRoot}/resources/ directory -->
+  <resources mapping="/resources/**" location="/resources/" />
+  <resources mapping="/views/**" location="/WEB-INF/views/" />
+  <!-- <resources mapping="/**" location="/themes/"/> -->
+  <resources mapping="/themes/**" location="/themes/" />
+
+  <!-- Custom view -->
+  <!-- <beans:bean class="com.gustz.dove.web.base.view.TplViewResolver"> -->
+  <!-- <beans:property name="viewClass" value="com.gustz.dove.web.base.view.TplView" /> -->
+  <!-- <beans:property name="contentType" value="text/html;charset=utf-8" /> -->
+  <!-- <beans:property name="prefix" value="themes" /> -->
+  <!-- <beans:property name="suffix" value=".html" /> -->
+  <!-- <beans:property name="cache" value="true" /> -->
+  <!-- <beans:property name="viewPrefix" value="views" /> -->
+  <!-- <beans:property name="resLibPath" value="/WEB-INF/views/resource-lib.html" /> -->
+  <!-- <beans:property name="viewHeadMeta"> -->
+  <!-- <beans:bean class="com.gustz.dove.web.comm.ViewHeadMetaResolver" /> -->
+  <!-- </beans:property> -->
+  <!-- </beans:bean> -->
+
+  <!-- JSP/HTML View -->
+  <beans:bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <beans:property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView" />
+    <beans:property name="contentType" value="text/html;charset=utf-8" />
+    <beans:property name="prefix" value="/WEB-INF/views/" />
+    <beans:property name="suffix" value=".jsp" />
+  </beans:bean>
+
+  <!-- conversion service begin -->
+  <beans:bean id="appConversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+    <beans:property name="formatters">
+      <beans:bean class="com.sinovatech.fw.mvc.util.UtilDateFormatter">
+        <beans:constructor-arg name="pattern" value="yyyy-MM-dd HH:mm:ss" />
+      </beans:bean>
+    </beans:property>
+  </beans:bean>
+  <annotation-driven conversion-service="appConversionService">
+    <message-converters>
+      <beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <beans:property name="objectMapper">
+          <beans:bean class="com.gustz.dove.web.util.JSONObjectMapper">
+            <beans:constructor-arg name="pattern" value="yyyy-MM-dd HH:mm:ss" />
+          </beans:bean>
+        </beans:property>
+      </beans:bean>
+    </message-converters>
+    <argument-resolvers>
+      <beans:bean class="com.sinovatech.fw.mvc.PrefixedParamResolver" />
+    </argument-resolvers>
+  </annotation-driven>
+  <!-- conversion service end -->
+
+  <!-- add environment variants -->
+  <beans:import resource="classpath:ds-context.xml" />
+  <!-- import registers -->
+  <beans:import resource="classpath*:register-context.xml" />
+  <!-- Imports user-defined @Controller beans that process client requests -->
+  <beans:import resource="controllers.xml" />
+
+</beans:beans>

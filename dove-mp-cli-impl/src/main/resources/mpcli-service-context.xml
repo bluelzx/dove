@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation=" 
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd 
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.2.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+  <!-- local package -->
+  <context:component-scan base-package="com.gustz.dove.mpcli.api.*.service.*" />
+
+  <!-- extends tool package -->
+  <context:component-scan base-package="com.sinovatech.fw.service.annotation.*" />
+  <!-- AOP annotation config -->
+  <aop:aspectj-autoproxy />
+
+  <!-- property config begin -->
+  <util:properties id="mpAccountWsUrlConf" location="classpath:conf/mp-account-ws-url.properties" />
+  <bean class="com.gustz.dove.mpcli.api.service.conf.MpAccountWsUrlConf" />
+
+  <util:properties id="mpCustomerWsUrlConf" location="classpath:conf/mp-customer-ws-url.properties" />
+  <bean class="com.gustz.dove.mpcli.api.service.conf.MpCustomerWsUrlConf" />
+
+  <util:properties id="mpHwdeviceWsUrlConf" location="classpath:conf/mp-hwdevice-ws-url.properties" />
+  <bean class="com.gustz.dove.mpcli.api.service.conf.MpHwdeviceWsUrlConf" />
+
+  <util:properties id="mpMaterialWsUrlConf" location="classpath:conf/mp-material-ws-url.properties" />
+  <bean class="com.gustz.dove.mpcli.api.service.conf.MpMaterialWsUrlConf" />
+
+  <util:properties id="mpMenuWsUrlConf" location="classpath:conf/mp-menu-ws-url.properties" />
+  <bean class="com.gustz.dove.mpcli.api.service.conf.MpMenuWsUrlConf" />
+
+  <util:properties id="mpMessageWsUrlConf" location="classpath:conf/mp-message-ws-url.properties" />
+  <bean class="com.gustz.dove.mpcli.api.service.conf.MpMessageWsUrlConf" />
+
+  <util:properties id="mpSecurityWsUrlConf" location="classpath:conf/mp-security-ws-url.properties" />
+  <bean class="com.gustz.dove.mpcli.api.service.conf.MpSecurityWsUrlConf" />
+
+  <util:properties id="mpUserWsUrlConf" location="classpath:conf/mp-user-ws-url.properties" />
+  <bean class="com.gustz.dove.mpcli.api.service.conf.MpUserWsUrlConf" />
+
+  <!-- property config end -->
+
+
+</beans>

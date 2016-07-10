@@ -1,0 +1,58 @@
+package com.gustz.dove.cpcli.api.customer.req;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sinovatech.rd.wcsb.cli.api.customer.req.CustBaseReq;
+import com.sinovatech.rd.wcsb.cli.api.customer.vo.TextCust;
+import com.sinovatech.rd.wcsb.cli.api.message.vo.CommCpMsg;
+import com.sinovatech.rd.wcsb.cli.api.service.dict.MsgTypeDict;
+import com.gustz.dove.cpcli.api.customer.req.TextCustReq.TextBodyCustReq;
+
+/**
+ * 
+ * TODO: 文本请求报文
+ *
+ * @author ZHENFENG ZHANG
+ * @since [ Aug 3, 2015 ]
+ */
+public class TextCustReq extends CustBaseReq<TextBodyCustReq> {
+
+    private static final long serialVersionUID = 1L;
+
+    public TextCustReq(String devAcCode, TextBodyCustReq body) {
+        super(devAcCode, body);
+    }
+
+    public static class TextBodyCustReq extends CommCpMsg {
+
+        private static final long serialVersionUID = 1L;
+
+        /**
+         * 文本消息对象
+         */
+        @JsonProperty("text")
+        private TextCust text;
+
+        public TextBodyCustReq() {
+            super.setMsgType(MsgTypeDict.TEXT);
+        }
+
+        public TextBodyCustReq(TextCust text) {
+            this();
+            this.text = text;
+        }
+
+        public TextBodyCustReq(String toUser, TextCust text) {
+            this(text);
+            super.setToUser(toUser);
+        }
+
+        public TextCust getText() {
+            return text;
+        }
+
+        public void setText(TextCust text) {
+            this.text = text;
+        }
+    }
+
+}

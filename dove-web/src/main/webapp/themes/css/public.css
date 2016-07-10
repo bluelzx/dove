@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* CSS Document */
+/*面包屑*/
+
+input[type=radio],input[type=checkbox]{ margin-right:2px;}
+body{ color:#818181;margin-top: -20px;margin-left: 0px;}
+.route{border-bottom: 2px solid #cccccc;height:30px;line-height:30px; padding-left:10px;}
+.mainBox{min-width:910px;_width:910px; height:auto; margin:0px 15px; padding:0px 0px 20px; margin-top:35px; /*overflow-x:auto;*/}
+.mainBox_2{width:855px; margin-top:0px; float:left}
+/*搜索栏表格*/
+/*.tb_searchbox{ line-height:32px; }*/
+.tb_searchbox td{ padding:5px 0; font-size:12px;}
+.input_normal{ border:1px solid #dfdfdf; height:20px; line-height:20px;}
+.text_1{ width:375px; height:20px; border:1px solid #dfdfdf}
+.text_2{ width:300px; height:20px; border:1px solid #dfdfdf}
+.text_3{ width:200px; height:20px; border:1px solid #dfdfdf}
+.text_4{ width:100px; height:20px; border:1px solid #dfdfdf}
+.text_8{ width:30px; height:20px; border:1px solid #dfdfdf}
+.textarea_1{ width:375px; height:80px; border:1px solid #dfdfdf}
+
+/*下拉框*/
+.selectbox{ width:170px; position: relative; border:1px solid #dfdfdf; height:20px; line-height:20px; background:#fff;cursor:pointer}
+.selectbox dt{ padding-left:10px;height:20px }
+.selectbox dt span.fright{ display:inline-block; float:right; width:20px; border-left:1px solid #ccc; background:url(images/public.png) no-repeat -5px -6px}
+.selectbox dt span.fleft{ float:left;display:inline-block; height:20px; width:136px;white-space:nowrap; overflow:hidden}
+.selectbox dd{ display:none; position:absolute; left:-1px; top:18px; background:#fff; border:1px solid #dfdfdf; line-height:20px; width:170px;white-space:nowrap; overflow-x:hidden;overflow-y:auto;max-height:160px;_height:160px; }
+.selectbox dd p{ padding-left:10px;text-align:left;}
+.selectbox dd p.sel{ background:#0085d0; color:#fff}
+.selectbox_2{ width:70px; margin:6px 5px 0px;}
+.selectbox_2 dt span.fleft{ width:30px;}
+.selectbox_2 dd{ width:70px;}
+.selectbox_3{ width:100px; margin:6px 5px 0px;}
+.selectbox_3 dt span.fleft{ width:65px;}
+.selectbox_3 dd{ width:100px;}
+
+/*共用按钮*/
+a.bt_blue{ background:url(images/bt_public.gif) right -47px #0085d0 no-repeat;  display: inline-block;  height: 25px; padding-right:14px; cursor:pointer;}
+a.bt_blue span{ background:url(images/bt_public.gif) #0085d0 left top no-repeat; display: inline-block;  height: 25px; line-height:24px; padding-left: 14px; color:#fff}
+
+
+/*数据表格*/
+.tb_content1{border-left:1px solid #e3e3e3; border-top:1px solid #e3e3e3; }
+.tb_content1 th,.tb_content1 td{ border-right:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3;text-align:center; font-size:12px;white-space:nowrap;padding:6px 5px;}
+.tb_content1 td a{white-space:nowrap;}
+.tb_content1 th{ font-variant:bold; padding:6px 0; font-size:13px;background: #e0ecff}
+.tb_content1 a,.tb_content1 a:visited{ color:#0085d0; text-decoration:none;}
+.tb_content1 a:hover{ color:blue; }
+.tb_content1 .odd td{ background:#f9f9f9}
+
+/*表格内按钮重写*/
+.tb_content1 span.bt_blue{ padding-right:7px;}
+.tb_content1 span.bt_blue span{padding-left:8px;}
+.tb_content1 span.bt_blue{ padding-right: 7px;}
+.tb_content1 span.bt_blue span{ padding-left:8px;}
+
+/*分页*/
+.page{ line-height:37px; color:#0085d0; text-align:center; margin-top:10px; padding:0 10px;}
+.page label,.page input{ margin:0 3px; float:left}
+/* .page .fr label{ cursor:pointer} */
+
+/*对齐方式*/
+.text_l{ text-align:left;}
+.text_r{ text-align:right;}
+.text_c{ text-align:center;}
+.middle a,.middle span,.middle label,.middle input,.middle img,.middle strong,.middle b{ vertical-align:middle}
+.midTop a,.midTop span,.midTop label,.midTop input,.midTop img,.midTop strong,.midTop textarea{ vertical-align:top}
+
+/*弹出窗口*/
+#cover{ position:absolute; z-index:10000; background:#000; opacity:0.3;filter:alpha(opacity=30); visibility:hidden; top:0; left:0}
+.coverCls{ position:absolute; z-index:10000; background:#000; opacity:0.3;filter:alpha(opacity=30); visibility:hidden; top:0; left:0}
+#coverBox{position:absolute; z-index:10010; background:#000; opacity:0.3;filter:alpha(opacity=30);display:none; top:0; left:0}
+.pop{ position:absolute; z-index:100002; width:880px;  border:2px solid #ccc; background:#fff; top:0; left:0; visibility:hidden;}
+.popPR{ position:relative;}
+.popTOP{ width:843px; position:absolute; left:10px; top:32px;}
+.popTitle{ height:32px; line-height:32px; background:#56b4d6; padding:0 10px; color:#fff}
+.popInfoBox{ overflow-y:auto; overflow-x:auto; padding:10px; width:860px; }
+.popInfoBox table td{ word-wrap:break-word;word-break:break-all;}
+.popTable{ overflow-y:auto; overflow-x:hidden;}
+.close{width:15px; height:10px; display:inline-block; margin-top:10px; cursor:pointer; background:url(images/close.gif) no-repeat left top}
+.glbmTable{ height:328px; overflow-y:auto}
+.w271{ height:271px;}
+.titleLeft,.titleRight{ display:inline-block; width:9px; height:36px; background:url(images/public.png) no-repeat;}
+.titleLeft{ background-position:-72px 0px;}
+.titleRight{ background-position:-87px 0px;}
+.titleCent{ width:292px; height:34px; line-height:34px; display:inline-block; background:#f9f9f9; border:1px solid #dfdfdf; border-left:none; border-right:none}
+.popInfoBox {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 10px;
+  width: 860px;
+}
+/*背景颜色*/
+.bg_ea{ background:#eaeaea}
+.bg_cff{ background:#fff}
+.bg_dl{ background:#bfe7ff;}
+.hand{ cursor:pointer}
+.default{ cursor:default}
+.bg_eb{ background:#ebebeb}
+.bg_f7{ background:#f7f7f7}
+
+/* 文本内容换行 */
+.new_line{white-space:normal;word-wrap:break-word;word-break:break-all;width :50%; overflow-x:hidden;overflow-y:auto;}

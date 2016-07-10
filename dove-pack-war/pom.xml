@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.gustz.fw</groupId>
+    <artifactId>pack-war</artifactId>
+    <version>0.0.2</version>
+  </parent>
+
+  <groupId>com.gustz.rd.wcsb</groupId>
+  <artifactId>wcsb-pack-war</artifactId>
+  <version>0.0.1</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <build-name>wcsb-cli-exporter</build-name>
+    <build-version>0.0.2-SNAPSHOT</build-version>
+
+  </properties>
+
+  <build>
+    <finalName>${build-name}</finalName>
+  </build>
+
+  <modules>
+    <module>web-jndi</module>
+    <module>web-jdbc</module>
+  </modules>
+
+</project>

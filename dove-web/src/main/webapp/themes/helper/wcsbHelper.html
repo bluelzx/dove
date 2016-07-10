@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html ng-app="wcsb.sys">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>微信服务助手</title>
+<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+<link rel="stylesheet" type="text/css" href="../../css/mianBox.css" />
+<script src="../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="../../js/public.js" type="text/javascript"></script>
+<!-- import E begin -->
+<!-- 
+<head-lib id="resource-lib"/>
+<script type="text/javascript" id="data-script"></script>
+ -->
+<!-- import E end -->
+
+</head>
+
+<body class="bg_cff">
+<div class="pop" style="visibility:visible;width: 100%;">
+	<div class="popTitle">
+		<strong class="font14 fl">微信服务的接入信息</strong>
+		<div class="clear"></div>
+	</div>
+	<div class="popInfoBox" style="padding: 0 10px; height: 310px;width: 100%;">
+		<p class="lineh40 borb font16 ">
+			<span>回调模式信息</span><img src="../../image/xl.gif" class="ml10" />
+		</p>
+		<div class="showInfo">
+			<table width="100%">
+				<tbody>
+					<tr>
+						<th align="right" style="width: 50px;" class="bg_eb">
+							<em style="color: red;">*&nbsp;</em>所属应用：
+						</th>
+						<td align="left" style="width: 150px;" class="bg_f7">
+							<div class="fl middle">
+								<div class="fl rightInfo_500 middle">
+					            	<dl class="selectbox fl" style="z-index: 1;" id="cliAppCode_sebox_">
+						            	<dt><span class="fleft" name="cliAppCode">--- 请选择 ---</span><span class="fright">&nbsp;</span></dt>
+						            	<dd>
+						                	<p name="--- 请选择 ---">--- 请选择 ---</p>
+						            	</dd>
+						        	</dl>
+						        	<input type="hidden" id="cliAppCode_" />
+						        	<span class="red ml10" id="cliAppCode_msg_"></span>
+				           		</div>
+							</div>
+						</td>
+						<th align="right" style="width: 50px;" class="bg_eb">
+							&nbsp;
+						</th>
+						<td align="left" style="width: 200px;" class="bg_f7">
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<th align="right" style="width: 50px;" class="bg_eb">
+							企业号回调URL：
+						</th>
+						<th align="left" style="width: 200px;font-weight: bold;font-size: 14px;" class="bg_f7">
+							&nbsp; http://124.192.56.203/wcsb-cli-exporter/wechat/cp/dispatcher
+							<br/>
+							（http/https://ip:port/wcsb-cli-exporter/wechat/cp/dispatcher）
+						</td>
+						<th align="right" style="width: 50px;" class="bg_eb">
+							订阅号/服务号回调URL：
+						</th>
+						<td align="left" style="width: 200px;font-weight: bold;font-size: 14px;" class="bg_f7">
+							&nbsp; http://124.192.56.203/wcsb-cli-exporter/wechat/mp/dispatcher
+							<br/>
+							（http/https://ip:port/wcsb-cli-exporter/wechat/mp/dispatcher）
+						</td>
+					</tr>
+					<tr>
+						<th align="right" style="width: 120px;" class="bg_eb">
+							Token：
+						</th>
+						<td align="left" style="width: 280px;" class="bg_f7">
+							<input type="text" readonly="readonly" id="devToken_" style="width: 400px;font-weight: bold;font-size: 14px;" />
+							<input type="button" value="生成" onclick="WcsbHelper.getDevToken();" />
+						</td>
+						<th align="right" style="width: 120px;" class="bg_eb">
+							EncodingAESKey：
+						</th>
+						<td align="left" style="width: 280px;" class="bg_f7">
+							<input type="text" readonly="readonly" id="devAesKeyt_" style="width: 400px;font-weight: bold;font-size: 14px;" />
+							<input type="button" value="生成" onclick="WcsbHelper.getDevAesKeyt();" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<p class="lineh40 borb font16 ">
+			<span>客户端应用信息</span><img src="../../image/xl.gif" class="ml10" />
+		</p>
+		<div class="showInfo">
+			<table width="100%">
+				<tbody>
+					<tr>
+						<th align="right" style="width: 100px;" class="bg_eb">
+							所属应用的编码：
+						</th>
+						<td align="left" style="width: 200px;" class="bg_f7">
+							<input type="text" readonly="readonly" id="cliAppCodeExt_" style="width: 400px;font-weight: bold;font-size: 14px;" />
+							<input type="button" value="生成" onclick="WcsbHelper.getCliAppVo();" />
+						</td>
+						<th align="right" style="width: 100px;" class="bg_eb">
+							所属应用的密码：
+						</th>
+						<td align="left" style="width: 200px;" class="bg_f7">
+							<input type="text" readonly="readonly" id="cliAppPwd_" style="width: 400px;font-weight: bold;font-size: 14px;" />
+						</td>
+					</tr>
+					<tr>
+						<th align="right" style="width: 100px;" class="bg_eb">
+							客户端开发者：
+						</th>
+						<td align="left" style="width: 200px;" class="bg_f7">
+							<input type="text" readonly="readonly" id="devAcCode_" style="width: 400px;font-weight: bold;font-size: 14px;" />
+						</td>
+						<th align="right" style="width: 100px;" class="bg_eb">
+							&nbsp;
+						</th>
+						<td align="left" style="width: 200px;font-weight: bold;font-size: 14px;" class="bg_f7">
+							&nbsp;
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div align="center" class="mb10">
+		<a href="###" class="mr10 bt_blue" onclick="javascript:history.go(-1);"><span>返回</span></a>
+	</div>
+</div>
+
+</body>
+</html>

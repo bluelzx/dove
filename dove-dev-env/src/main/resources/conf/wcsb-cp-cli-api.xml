@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+  default-autowire="byName" default-lazy-init="true">
+
+  <bean id="userCpService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+    <property name="serviceUrl" value="http://127.0.0.1:8080/wcsb-cli-exporter/http/invoker/userCpService" />
+    <property name="serviceInterface" value="com.gustz.dove.cpcli.api.addrbook.service.UserCpService" />
+  </bean>
+  <bean id="deptCpService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+    <property name="serviceUrl" value="http://127.0.0.1:8080/wcsb-cli-exporter/http/invoker/deptCpService" />
+    <property name="serviceInterface" value="com.gustz.dove.cpcli.api.addrbook.service.DeptCpService" />
+  </bean>
+  <bean id="materialCpService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+    <property name="serviceUrl" value="http://127.0.0.1:8080/wcsb-cli-exporter/http/invoker/materialCpService" />
+    <property name="serviceInterface" value="com.gustz.dove.cpcli.api.material.service.MaterialCpService" />
+  </bean>
+  <bean id="messageCpService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+    <property name="serviceUrl" value="http://127.0.0.1:8080/wcsb-cli-exporter/http/invoker/messageCpService" />
+    <property name="serviceInterface" value="com.gustz.dove.cpcli.api.message.service.MessageCpService" />
+  </bean>
+  <bean id="agentCpService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+    <property name="serviceUrl" value="http://127.0.0.1:8080/wcsb-cli-exporter/http/invoker/agentCpService" />
+    <property name="serviceInterface" value="com.gustz.dove.cpcli.api.agent.service.AgentCpService" />
+  </bean>
+  <bean id="oauthCpService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+    <property name="serviceUrl" value="http://127.0.0.1:8080/wcsb-cli-exporter/http/invoker/oauthCpService" />
+    <property name="serviceInterface" value="com.gustz.dove.cpcli.api.security.service.OauthCpService" />
+  </bean>
+  <bean id="customerCpService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+    <property name="serviceUrl" value="http://127.0.0.1:8080/wcsb-cli-exporter/http/invoker/customerCpService" />
+    <property name="serviceInterface" value="com.gustz.dove.cpcli.api.customer.service.CustomerCpService" />
+  </bean>
+  <bean id="signService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+    <property name="serviceUrl" value="http://127.0.0.1:8080/wcsb-cli-exporter/http/invoker/signService" />
+    <property name="serviceInterface" value="com.gustz.dove.cli.api.security.service.SignService" />
+  </bean>
+  <bean id="encryptService" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+    <property name="serviceUrl" value="http://127.0.0.1:8080/wcsb-cli-exporter/http/invoker/encryptService" />
+    <property name="serviceInterface" value="com.gustz.dove.cli.api.security.service.EncryptService" />
+  </bean>
+</beans> 

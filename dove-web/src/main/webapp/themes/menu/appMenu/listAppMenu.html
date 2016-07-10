@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html ng-app="wcsb.sys">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>应用菜单</title>
+<link rel="stylesheet" type="text/css" href="../../css/base.css" />
+<link rel="stylesheet" type="text/css" href="../../css/public.css" />
+<link rel="stylesheet" type="text/css" href="../../css/mianBox.css" />
+<script src="../../js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="../../js/public.js" type="text/javascript"></script>
+<!-- import E begin -->
+<head-lib id="resource-lib"/>
+<script type="text/javascript" id="data-script"></script>
+<!-- import E end -->
+
+</head>
+
+<body class="bg_cff" ng-controller="ListAppMenu as dictGroup">
+<!-- value: {{ dictGroup.data.success }} <br/> -->
+<div class="mainBox">
+	<div class="route">
+		<span>当前所在位置：</span><span style="font-weight: bold;">应用菜单</span>
+	</div>
+	<p class="overflow text_l mt10">
+		<a id="prep_add_btn" href="javascript:;" class="bt_blue mr20" ><span>新增菜单</span></a>
+		<a id="bat_del_btn" href="javascript:;" class="bt_blue mr10"  onclick="show('cover','del_dlg')"><span>批量删除</span></a>
+		&nbsp;&nbsp;
+		<a id="deploy_btn" href="javascript:;" class="bt_blue mr20" ><span>发布菜单</span></a>
+	</p>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="mt15 tb_content1" id="dataTable">
+		<tr id="searchRow">
+			<td colspan="2">&nbsp;</td>
+			<td class="pl5 pr5"><input class="input_normal w160 fl" />
+			</td>
+			<td class="pl5 pr5">
+				<dl class="selectbox" style="z-index: 1;">
+					<dt>
+						<span class="fleft">全部</span><span class="fright">&nbsp;</span>
+					</dt>
+					<dd>
+						<p class="sel" name="全部">全部</p>
+					</dd>
+				</dl></td>
+			<td class="pl5 pr5"><dl class="selectbox" style="z-index: 1;">
+					<dt>
+						<span class="fleft">全部</span><span class="fright">&nbsp;</span>
+					</dt>
+					<dd>
+						<p class="sel" name="全部">全部</p>
+					</dd>
+				</dl>
+			</td>
+			<td>&nbsp;</td>
+			<td><a href="javascript:;" class="bt_blue"><span>查询</span> </a><a
+				href="javascript:;" class="bt_blue ml20"><span>重置</span> </a>
+			</td>
+		</tr>
+		<!-- 表头 -->
+		<tr id="dataHead">
+			<th width="30"><input class="checkedAll" type="checkbox" id="cbox_all" name="items"/></th>
+			<th _name="index" width="4%">序号</th>
+			<th _name="appMenuCodeLk" width="10%">菜单编码</th>
+			<th _name="appMenuName" width="15%">菜单名称</th>
+			<th _name="cliAppName" _type="none" width="10%">所属应用</th>
+			<th _name="status" _type="selectbox" _opt="{APP_MENU_STATUS}" width="6%">状态</th>
+			<th _name="createTime" _type="none" width="15%">创建时间</th>
+			<th _name="content" _type="none" content_limit="100" >菜单内容</th>
+			<th _name="ope" width="10%">操作</th>
+		</tr>
+		<!-- 操作 -->
+		<tr id="tempBody" style="display: none">
+			<td><input type="checkbox" name="items" value="{id}" /></td>
+			<td>{index}</td>
+			<td>{appMenuCode}</td>
+			<td>{appMenuName}</td>
+			<td>{cliAppName}</td>
+			<td>{statusText}</td>
+			<td>{createTime}</td>
+			<td>{content}</td>
+			<td>
+				<a href="javascript:;" class="ml10" onclick="ListAppMenu.edit('{id}')">编辑</a>
+				<a href="javascript:;" class="ml10" onclick="ListAppMenu.del('{id}')">删除</a>
+				&nbsp;
+				<a href="javascript:;" class="ml10" onclick="ListAppMenu.config('{id}')">配置菜单</a>
+				&nbsp;
+			</td>
+		</tr>
+		<tr name="dataTr">
+			<td><input type="checkbox" name="items" /></td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>
+				<a href="javascript:;" class="ml10">编辑</a>
+				<a href="javascript:;" class="ml10" onclick="show('cover','del_dlg')">删除</a>
+				&nbsp;
+				<a href="javascript:;" class="ml10">配置菜单</a>
+				&nbsp;
+			</td>
+		</tr>
+	</table>
+	<!-- 分页 开始 -->
+	<div class="page">
+		<div class="fr pageFL" id="pageDiv">
+			<label>首页</label><label >上一页</label><label>下一页</label><label>末页</label>
+			<label>共1页</label><label>共1条</label>
+			<dl class="selectbox selectbox_2 fl" style="z-index: 1;">
+				<dt>
+					<span class="fleft">10</span><span class="fright">&nbsp;</span>
+				</dt>
+				<dd>
+					<p class="sel" name="10">20</p>
+					<p class="sel" name="10">40</p>
+					<p class="sel" name="50">80</p>
+					<p class="sel" name="50">100</p>
+				</dd>
+			</dl>
+			<label>条</label>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<!--分页 结束-->
+
+	<!--"heightBox"是为了撑开页面高度 开始-->
+	<div class="heightBox"></div>
+	<!--"heightBox"是为了撑开页面高度 结束-->
+
+</div>
+
+<!--弹出层 开始-->
+<div class="cover" id="cover"></div>
+
+<!--维护菜单项 开始-->
+<div class="pop" id="menu_list_dlg" style="width: 1000px;"></div>
+<!--维护菜单项 结束-->
+
+<!--编辑操作 开始-->
+<div class="pop" id="edit_dlg" style="width: 600px;">
+	<div class="popTitle">
+		<span class="close fr" onclick="hide('cover','edit_dlg')"></span><strong class="font14 fl">
+			<label id="edit_fm_lab">编辑</label>菜单
+		</strong>
+		<div class="clear"></div>
+	</div>
+	<form id="edit_fm" style="padding:10px;">
+		<!-- hidden value -->
+		<input type="hidden" id="id_" name="id" value="" />
+		<p class="lineh40 borb font16">
+			<span>基本信息</span><img src="../../image/xl.gif" class="ml10" />
+		</p>
+		<div class="mt10">
+			<p class="fl middle">
+				<span><em style="color: red;">*&nbsp;</em>所属应用：&nbsp;</span>
+			</p>
+			<div class="fl middle">
+				<div class="fl rightInfo_500 middle">
+	            	<dl class="selectbox fl" style="z-index: 1;" id="cliAppCode_sebox_">
+		            	<dt><span class="fleft" name="cliAppCode">--- 请选择 ---</span><span class="fright">&nbsp;</span></dt>
+		            	<dd>
+		                	<p name="--- 请选择 ---">--- 请选择 ---</p>
+		            	</dd>
+		        	</dl>
+		        	<input type="hidden" id="cliAppCode_" />
+		        	<span class="red ml10" id="cliAppCode_msg_"></span>
+           		</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="mt10">
+			<p class="fl middle">
+				<span><em style="color: red;">*&nbsp;</em>菜单名称：&nbsp;</span>
+			</p>
+			<div class="fl middle">
+				<input type="text" class="input_normal w160 required" id="appMenuName_" name="appMenuName" maxlength="60" style="width: 350px;"/>
+				<span class="red ml10" id="appMenuName_msg_"></span>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="mt10">
+			<p class="fl middle" style="width: 70px;">
+				<span><em style="color: red;">*&nbsp;</em>菜单内容：</span>
+			</p>
+			<div class="fl middle">
+				<textarea rows="4" cols="20" id="content_" name="content" style="width:400px;height:150px;"></textarea>
+				<br/> 
+				<span class="red">（JSON格式字符串）</span>
+				<span class="red ml10" id="content_msg_"></span>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</form>
+	<div class="text_c mt10 mb10">
+		<a id="edit_btn" href="javascript:;" class="mr10 bt_blue" onclick="hide('cover','edit_dlg');show('cover','save_ok_dlg')"><span>保存</span></a>
+		<a href="javascript:;" class="mr10 bt_blue" onclick="hide('cover','edit_dlg')"><span>取消</span></a>
+	</div>
+</div>
+<!--编辑操作 结束-->
+
+<!--保存成功 开始-->
+<div class="pop" id="save_ok_dlg" style="width: 300px;">
+	<div class="popTitle">
+		<a id="t_save_ok_btn" href="javascript:;" class="close fr" onclick="hide('cover','save_ok_dlg')"></a><strong class="font14 fl">提示</strong>
+		<div class="clear"></div>
+	</div>
+	<div class="mt25 mb25">
+		<p class="text_c">保存成功！</p>
+	</div>
+	<div class="text_c mt10 mb10">
+		<a id="save_ok_btn" href="javascript:;" class="mr10 bt_blue" onclick="hide('cover','save_ok_dlg')"><span>确定</span></a>
+	</div>
+</div>
+<!--保存成功 结束-->
+
+<!--确定要删除 开始-->
+<div class="pop" id="del_dlg" style="width: 300px;">
+	<div class="popTitle">
+		<span id="tn_del_btn" class="close fr" onclick="hide('cover','del_dlg')"></span><strong class="font14 fl">提示</strong>
+		<div class="clear"></div>
+	</div>
+	<div class="mt25 mb25"><p class="text_c">确定要删除吗？</p></div>
+	<div class="text_c mt10 mb10">
+		<a id="y_del_btn" href="javascript:;" class="mr10 bt_blue" onclick="hide('cover','del_dlg');show('cover','del_ok_dlg')"><span>确定</span></a>
+		<a id="n_del_btn" href="javascript:;" class="mr10 bt_blue" onclick="hide('cover','del_dlg')"><span>取消</span></a>
+	</div>
+</div>
+<!--确定要删除 结束-->
+<!--删除成功 开始-->
+<div class="pop" id="del_ok_dlg" style="width: 300px;">
+	<div class="popTitle">
+		<a id="t_del_ok_btn" href="javascript:;" class="close fr" onclick="hide('cover','del_ok_dlg')"></a><strong class="font14 fl">提示</strong>
+		<div class="clear"></div>
+	</div>
+	<div class="mt25 mb25">
+		<p class="text_c">删除成功！</p>
+	</div>
+	<div class="text_c mt10 mb10">
+		<a id="del_ok_btn" href="javascript:;" class="mr10 bt_blue" onclick="hide('cover','del_ok_dlg')"><span>确定</span></a>
+	</div>
+</div>
+<!--删除成功 结束-->
+
+<!--选择提示 开始-->
+<div class="pop" id="select_dlg" style="width: 300px;">
+	<div class="popTitle">
+		<a id="t_select_btn" href="javascript:;" class="close fr" onclick="hide('cover','select_dlg')"></a><strong class="font14 fl">提示</strong>
+		<div class="clear"></div>
+	</div>
+	<div class="mt25 mb25">
+		<p class="text_c">请您选择一条或多条记录！</p>
+	</div>
+	<div class="text_c mt10 mb10">
+		<a id="select_btn" href="javascript:;" class="mr10 bt_blue" onclick="hide('cover','select_dlg')"><span>确定</span></a>
+	</div>
+</div>
+<!--选择提示 结束-->
+
+<!--确定要发布菜单 开始-->
+<div class="pop" id="deploy_dlg" style="width: 300px;">
+	<div class="popTitle">
+		<span id="tn_deploy_btn" class="close fr" onclick="hide('cover','deploy_dlg')"></span><strong class="font14 fl">提示</strong>
+		<div class="clear"></div>
+	</div>
+	<div class="mt25 mb25"><p class="text_c">确定要发布该菜单吗？</p></div>
+	<div class="text_c mt10 mb10">
+		<a id="y_deploy_btn" href="javascript:;" class="mr10 bt_blue" onclick="hide('cover','deploy_dlg');"><span>确定</span></a>
+		<a id="n_deploy_btn" href="javascript:;" class="mr10 bt_blue" onclick="hide('cover','deploy_dlg')"><span>取消</span></a>
+	</div>
+</div>
+<!--确定要发布菜单 结束-->
+<!--操作成功 开始-->
+<div class="pop" id="ok_dlg" style="width: 300px;">
+	<div class="popTitle">
+		<a id="t_ok_btn" href="javascript:;" class="close fr" onclick="hide('cover','ok_dlg')"></a><strong class="font14 fl">提示</strong>
+		<div class="clear"></div>
+	</div>
+	<div class="mt25 mb25">
+		<p class="text_c" id="txt_ok_dlg">操作成功！</p>
+	</div>
+	<div class="text_c mt10 mb10">
+		<a id="ok_btn" href="javascript:;" class="mr10 bt_blue" onclick="hide('cover','ok_dlg')"><span>确定</span></a>
+	</div>
+</div>
+<!--操作成功 结束-->
+
+</body>
+</html>

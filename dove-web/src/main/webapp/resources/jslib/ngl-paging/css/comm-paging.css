@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+.page-list .paging {
+	float: left;
+}
+
+.page-list .paging span {
+	cursor: pointer;
+}
+
+.page-list .paging .separate span {
+	cursor: default;
+	border-top: none;
+	border-bottom: none;
+}
+
+.page-list .paging .separate span:hover {
+	background: none;
+}
+
+.page-list .page-total {
+	float: left;
+	margin: 25px 20px;
+}
+
+.page-list .page-total input,.page-list .page-total select {
+	height: 26px;
+	border: 1px solid #ddd;
+}
+
+.page-list .page-total input {
+	width: 40px;
+	padding-left: 3px;
+}
+
+.page-list .page-total select {
+	width: 50px;
+}

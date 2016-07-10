@@ -1,0 +1,16 @@
+常见问题解答
+
+
+----------------------------------------------
+1、将本地jar添加到本地maven库（远程maven无jar包时）
+a、下载maven应用，配置M2_HOME目录和path环境变量：M2_HOME=f:\maven  path=%M2_HOME%\bin
+b、修改maven目录下conf/settingse.xml的配置项：
+<localRepository>f:\maven\repo</localRepository>
+c、在命令行cmd里执行如下命令：
+mvn install:install-file -Dfile=f:/DeveLibs/sino-bmsClient-1.7.0.jar -DgroupId=com.sinovatech.bms -DartifactId=sino-bmsClient -Dversion=1.7.0 -Dpackaging=jar
+说明：-Dfile本地jar路径，DgroupId组ID，DartifactId唯一标识，Dversion jar版本，Dpackaging 包类型。
+
+2、
+
+3、
+

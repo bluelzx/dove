@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dictGroupPos>
+    <sysDictGroupPo>
+        <id xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">1</id>
+        <createTime>2015-01-01T00:00:00+08:00</createTime>
+        <groupCode>COMM_YN_TYPE</groupCode>
+        <groupName>是否类型</groupName>
+        <isDelete>N</isDelete>
+        <remarks></remarks>
+    </sysDictGroupPo>
+    <sysDictGroupPo>
+        <id xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">10</id>
+        <createTime>2015-08-31T02:20:14+08:00</createTime>
+        <groupCode>APP_MENU_STATUS</groupCode>
+        <groupName>应用菜单状态</groupName>
+        <isDelete>N</isDelete>
+        <remarks></remarks>
+    </sysDictGroupPo>
+    <sysDictGroupPo>
+        <id xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">2</id>
+        <createTime>2015-01-01T00:00:00+08:00</createTime>
+        <groupCode>COMM_SEX</groupCode>
+        <groupName>性别</groupName>
+        <isDelete>N</isDelete>
+        <remarks></remarks>
+    </sysDictGroupPo>
+    <sysDictGroupPo>
+        <id xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">3</id>
+        <createTime>2015-01-01T00:00:00+08:00</createTime>
+        <groupCode>COMM_RUN_STATE</groupCode>
+        <groupName>运行状态</groupName>
+        <isDelete>N</isDelete>
+        <remarks></remarks>
+    </sysDictGroupPo>
+    <sysDictGroupPo>
+        <id xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">5</id>
+        <createTime>2015-01-01T00:00:00+08:00</createTime>
+        <groupCode>COMM_MAIL_TASK_STATE</groupCode>
+        <groupName>邮件任务状态</groupName>
+        <isDelete>N</isDelete>
+        <remarks></remarks>
+    </sysDictGroupPo>
+    <sysDictGroupPo>
+        <id xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">6</id>
+        <createTime>2015-01-01T00:00:00+08:00</createTime>
+        <groupCode>COMM_FILE_STORE_PATH</groupCode>
+        <groupName>文件存储路径</groupName>
+        <isDelete>N</isDelete>
+        <remarks></remarks>
+    </sysDictGroupPo>
+    <sysDictGroupPo>
+        <id xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">7</id>
+        <createTime>2015-01-01T00:00:00+08:00</createTime>
+        <groupCode>REPLY_TYPE</groupCode>
+        <groupName>回复语类型</groupName>
+        <isDelete>N</isDelete>
+        <remarks></remarks>
+    </sysDictGroupPo>
+    <sysDictGroupPo>
+        <id xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">8</id>
+        <createTime>2015-08-31T02:20:14+08:00</createTime>
+        <groupCode>APP_STATUS</groupCode>
+        <groupName>客户端应用状态</groupName>
+        <isDelete>N</isDelete>
+        <remarks></remarks>
+    </sysDictGroupPo>
+    <sysDictGroupPo>
+        <id xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">9</id>
+        <createTime>2015-08-31T02:20:14+08:00</createTime>
+        <groupCode>ACC_TYPE</groupCode>
+        <groupName>账户类型</groupName>
+        <isDelete>N</isDelete>
+        <remarks></remarks>
+    </sysDictGroupPo>
+    <sysDictGroupPo>
+        <id xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">ff8080814f9923a8014f9926d3a10000</id>
+        <createTime>2015-09-05T00:18:22+08:00</createTime>
+        <groupCode>COMM_AUTH_CONTENT_TYPE</groupCode>
+        <groupName>合法的文件类型</groupName>
+        <isDelete>N</isDelete>
+        <remarks></remarks>
+    </sysDictGroupPo>
+</dictGroupPos>
